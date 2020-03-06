@@ -65,8 +65,6 @@ export const methods = [
 	'isDevToolsFocused',
 	'inspectElement',
 	'inspectServiceWorker',
-	'setAudioMuted',
-	'isAudioMuted',
 	'undo',
 	'redo',
 	'cut',
@@ -110,7 +108,7 @@ export const props = {
 	guestinstance: PropTypes.number,
 	disableguestresize: PropTypes.bool,
 	devtools: PropTypes.bool,
-	muted: PropTypes.bool,
+	audioMuted: PropTypes.bool,
 };
 
 export const changableProps = {
@@ -118,5 +116,8 @@ export const changableProps = {
 	useragent: 'setUserAgent',
 	guestinstance: '__USE_ATTR__',
 	devtools: 'setDevTools',
-	muted: 'setAudioMuted',
 };
+
+export const staticProps = [
+	'audioMuted',
+]

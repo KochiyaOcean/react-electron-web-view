@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import camelCase from 'lodash.camelcase';
-import { changableProps, events, methods, props } from './constants';
+import { changableProps, events, methods, props, staticProps } from './constants';
 
 export default class ElectronWebView extends Component {
   componentDidMount() {
@@ -10,7 +10,11 @@ export default class ElectronWebView extends Component {
     Object.keys(props).forEach((propName) => {
       if (typeof this.props[propName] !== 'undefined') {
         if (typeof this.props[propName] === 'boolean') {
-          propString += `${propName}="${this.props[propName] ? 'on' : 'off'}" `;
+          if (this.view[propName] != null) {
+            this.view[propName] = this.props[propName]
+          } else {
+            propString += `${propName}="${this.props[propName] ? 'on' : 'off'}" `;
+          }
         } else {
           propString += `${propName}=${JSON.stringify(this.props[propName].toString())} `;
         }
@@ -62,6 +66,11 @@ export default class ElectronWebView extends Component {
         }
       }
     });
+    staticProps.forEach((propName) => {
+      if (this.props[propName] !== prevProps[propName]) {
+        this.view[propName] = this.props[propName]
+      }
+    })
   }
 
   isReady() {
