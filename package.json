@@ -1,6 +1,6 @@
 {
-  "name": "react-electron-web-view-2",
-  "version": "2.0.2",
+  "name": "electron-react-webview",
+  "version": "2.0.3",
   "description": "Electron WebView",
   "main": "lib/ElectronWebView.js",
   "author": "Samuel Attard",
@@ -13,7 +13,8 @@
     "url": "https://github.com/MarshallOfSound/react-electron-web-view/issues"
   },
   "dependencies": {
-    "lodash.camelcase": "^4.3.0"
+    "lodash.camelcase": "^4.3.0",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
